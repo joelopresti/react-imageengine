@@ -1,22 +1,70 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import buildUrl from './buildUrl'
 
-import styles from './styles.css'
-
-export default class ExampleComponent extends Component {
+export default class ImageEngine extends Component {
   static propTypes = {
-    text: PropTypes.string
+    src: PropTypes.string.isRequired,
+    srcset: PropTypes.array,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    compression: PropTypes.number,
+    format: PropTypes.string,
+    fitMethod: PropTypes.string,
+    passThrough: PropTypes.bool,
+    sharpness: PropTypes.number,
+    rotate: PropTypes.number,
+    percentageOfScreen: PropTypes.number,
+    crop: PropTypes.string,
+    inline: PropTypes.bool,
+    stripExifData: PropTypes.bool,
+    htmlAttributes: PropTypes.object
   }
 
   render() {
     const {
-      text
+      src,
+      srcset,
+      width,
+      height,
+      compression,
+      format,
+      fitMethod,
+      passThrough,
+      sharpness,
+      rotate,
+      percentageOfScreen,
+      crop,
+      inline,
+      stripExifData,
+      htmlAttributes
     } = this.props
 
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
+    const options = {
+      width,
+      height,
+      compression,
+      format,
+      fitMethod,
+      passThrough,
+      sharpness,
+      rotate,
+      percentageOfScreen,
+      crop,
+      inline,
+      stripExifData
+    }
+
+    const domain = process.env.REACT_APP_IE_DOMAIN
+    const secure = process.env.REACT_APP_IE_SSL ? 'https://' : 'http://'
+    const imgSrc = buildUrl(src, options)
+    const renderUrl = secure + domain + imgSrc
+
+    if (!src) {
+      // eslint-disable-next-line jsx-a11y/alt-text
+      return (<img src='' {...htmlAttributes} />)
+    }
+    return (<img src={renderUrl} {...htmlAttributes} />)
   }
 }
