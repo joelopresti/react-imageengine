@@ -24,7 +24,6 @@ function buildUrl(src, options) {
   for (let i = 0; i < keysLength; i += 1) {
     const key = keys[i]
     const val = options[key]
-    console.log({i, key, val})
 
     if (DIRECTIVES[key] && val !== undefined) {
       url += `/${DIRECTIVES[key]}_${val}/`
