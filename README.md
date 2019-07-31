@@ -1,5 +1,3 @@
-
-
 # ImageEngine
 
 [ImageEngine](https://imageengine.io) is an intelligent image CDN for optimizing, compressing and resizing images. ImageEngine will enhance your responsive images by enabling support for HTTP2, automatic webp / jpeg-2000 conversion, Client Hints and more.
@@ -32,29 +30,63 @@ The easiest way to use react-imageengine is to install it from NPM and include i
 npm install react-imageengine --save
 ```
 
-
 ## Usage
 
 ```
 const ImageEngine = require('react-imageengine');
 
-<ImageEngine src={"/image.jpg"} h={20} w={30} htmlAttributes={{alt:'Image alt tag'}}/>
+<ImageEngine src={"/image.jpg"} width={20} height={30} htmlAttributes={{alt:'Image alt tag'}}/>
 ```
 
 Note : src parameters are required other parameters are optional
 
-Check the [ImageEngine Documentation](https://docs.scientiamobile.com/documentation/image-engine/image-engine-getting-started?utm_source=npmjs.com&utm_medium=page&utm_term=react-component&utm_campaign=react-component) for the list of available settings.
+### Directives
+
+The following directives are available as props in your component
+
+* width
+* height
+* compression
+* format
+* fitMethod
+* passThrough
+* sharpness
+* rotate
+* percentageOfScreen
+* crop
+* inline
+* stripExifData
+
+Check the [ImageEngine Documentation](https://docs.scientiamobile.com/documentation/ImageEngine/index#directives?utm_source=npmjs.com&utm_medium=page&utm_term=react-component&utm_campaign=react-component) for the list of available settings.
+
+### HTML Attributes
+
+HTML Attributes like the alt tag can be defined in the `htmlAttributes` prop, which requires an object to properly pass the attributes to the img tag
+
+Example
+```
+htmlAttributes={{
+  alt:'Example alt tag',
+  className:'example-class'
+}}
+```
 
 ##  Registered user
 
-Before using this React Component you need to include two environment variables in order to pull from ImageEngine. REACT_APP_IE_DOMAIN, which is the domain you have configured in ImageEngine `mysite.com.imgeng.in` & REACT_APP_IE_SSL, which requires a boolean value if you want to serve through HTTPS or not.
+Before using this React Component you need to include two environment variables in order to pull from ImageEngine. `REACT_APP_IE_DOMAIN`, which is the domain you have configured in ImageEngine. & `REACT_APP_IE_SSL`, which requires a boolean value if you want to serve through HTTPS or not.
+
+Example:
+``` 
+REACT_APP_IE_DOMAIN=mysite.com.imgeng.in
+REACT_APP_IE_SSL=true
+```
 
 To add these environment variables create a .env at the root of your project and assign values to these variables. You can read more about adding custom variables here [Create React App Adding Custom Variables](https://facebook.github.io/create-react-app/docs/adding-custom-environment-variables)
 
 #To run this example
 
 * `git clone`
+* `cd example`
 * `npm install`
 * `npm start`
-* example code runs at `http://localhost:8000`
-* check sample implementation inside example/src
+* example runs create-react-app

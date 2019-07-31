@@ -6,7 +6,7 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <ImageEngine src='/images/imageengine-homepage.png' width={'500'} htmlAttributes={{alt:'ImageEngine image'}}/>
+        <ImageEngine src='/images/imageengine-homepage.png' width={'500'} htmlAttributes={{alt:'ImageEngine image', className:'my-class'}}/>
       </div>
     )
   }
