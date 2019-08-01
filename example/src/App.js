@@ -9,6 +9,10 @@ export default class App extends Component {
         <h1 className="header">React ImageEngine Examples</h1>
         <div className="wrapper">
         <div className="col">
+            <h2>Original</h2>
+            <img src="https://imageengine.io/images/adventure-american-bison-bison.jpg" width="500px"/>
+          </div>
+        <div className="col">
             <h2>Auto Example</h2>
             <ImageEngine
               src="/images/adventure-american-bison-bison.jpg"
@@ -23,11 +27,12 @@ export default class App extends Component {
             <h2>Width Auto Example</h2>
             <ImageEngine
               src="/images/adventure-american-bison-bison.jpg"
-              width={"auto"}
+              width={"auto,500"}
+              sizes={"50vw"}
               htmlAttributes={{
                 alt: "ImageEngine image",
                 className: "my-class",
-                sizes: "50vw"
+
               }}
             />
           </div>

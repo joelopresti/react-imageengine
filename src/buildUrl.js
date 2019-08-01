@@ -26,7 +26,7 @@ function buildUrl(src, options) {
     const val = options[key]
 
     if (DIRECTIVES[key] && val !== undefined) {
-      url += `/${DIRECTIVES[key]}_${val}/`
+      url += `${DIRECTIVES[key]}_${val}/`
     }
   }
 

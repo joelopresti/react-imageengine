@@ -6,7 +6,8 @@ import buildUrl from './buildUrl'
 export default class ImageEngine extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
-    srcset: PropTypes.array,
+    srcset: PropTypes.string,
+    sizes: PropTypes.string,
     width: PropTypes.number,
     height: PropTypes.number,
     compression: PropTypes.number,
@@ -26,6 +27,7 @@ export default class ImageEngine extends Component {
     const {
       src,
       srcset,
+      sizes,
       width,
       height,
       compression,
@@ -65,6 +67,14 @@ export default class ImageEngine extends Component {
       // eslint-disable-next-line jsx-a11y/alt-text
       return (<img src='' {...htmlAttributes} />)
     }
-    return (<img src={renderUrl} {...htmlAttributes} />)
+    return (<img src={renderUrl} srcSet={srcset} sizes={sizes} {...htmlAttributes} />)
   }
 }
+
+// export class Picture extends Component {
+// render() {
+//   <picture>
+
+//   </picture>
+// }
+// }
