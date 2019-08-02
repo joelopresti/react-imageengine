@@ -10,7 +10,8 @@ export default class App extends Component {
         <div className="wrapper">
         <div className="col">
             <h2>Original</h2>
-            <img src="https://imageengine.io/images/adventure-american-bison-bison.jpg" width="500px"               htmlAttributes={{
+            <img src="https://imageengine.io/images/adventure-american-bison-bison.jpg" width="500px"               
+              htmlAttributes={{
                 alt: "ImageEngine image",
                 className: "my-class",
                 width: "500px"
