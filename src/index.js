@@ -71,10 +71,86 @@ export default class ImageEngine extends Component {
   }
 }
 
-// export class Picture extends Component {
-// render() {
-//   <picture>
+export class Picture extends Component {
+  static propTypes = {
+    htmlAttributes: PropTypes.object,
+    children: PropTypes.node
 
-//   </picture>
-// }
-// }
+  }
+  render() { 
+    const { htmlAttributes, children } = this.props
+    return (
+      <picture {...htmlAttributes}>{children}</picture>
+    )
+  }
+}
+
+export class Source extends Component {
+  static propTypes = {
+    srcSet: PropTypes.string.isRequired,
+    sizes: PropTypes.string,
+    media: PropTypes.string,
+    type: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    compression: PropTypes.number,
+    format: PropTypes.string,
+    fitMethod: PropTypes.string,
+    passThrough: PropTypes.bool,
+    sharpness: PropTypes.number,
+    rotate: PropTypes.number,
+    percentageOfScreen: PropTypes.number,
+    crop: PropTypes.string,
+    inline: PropTypes.bool,
+    stripExifData: PropTypes.bool,
+    htmlAttributes: PropTypes.object
+  }
+
+  render() {
+    const {
+      srcSet,
+      sizes,
+      media,
+      type,
+      width,
+      height,
+      compression,
+      format,
+      fitMethod,
+      passThrough,
+      sharpness,
+      rotate,
+      percentageOfScreen,
+      crop,
+      inline,
+      stripExifData,
+      htmlAttributes
+    } = this.props
+
+    const options = {
+      width,
+      height,
+      compression,
+      format,
+      fitMethod,
+      passThrough,
+      sharpness,
+      rotate,
+      percentageOfScreen,
+      crop,
+      inline,
+      stripExifData
+    }
+
+    const domain = process.env.REACT_APP_IE_DOMAIN
+    const secure = process.env.REACT_APP_IE_SSL ? 'https://' : 'http://'
+    const imgSrc = buildUrl(srcSet, options)
+    const renderUrl = secure + domain + imgSrc
+
+    if (!srcSet) {
+    // eslint-disable-next-line jsx-a11y/alt-text
+      return (<source srcSet='' {...htmlAttributes} />)
+    }
+    return (<source srcSet={renderUrl} media={media} type={type} sizes={sizes} {...htmlAttributes} />)
+  }
+}
