@@ -20,7 +20,11 @@ HTTP will give additional performance improvement on the network level. ImageEng
 
 ## WebP
 
-WebP is a lightweigh image format with great quality. WebP is well supported by browsers. ImageEngine will detect if the end user's browser supports WebP and automatically convert any format to WebP to increase performance.
+WebP is a lightweight image format with great quality. WebP is well supported by browsers. ImageEngine will detect if the end user's browser supports WebP and automatically convert any format to WebP to increase performance.
+
+## JPEG 2000
+
+JPEG 2000 is a much better image solution than the original JPEG file format. Using a sophisticated encoding method, JPEG 2000 files can compress files with less loss of, what we might consider, visual performance. In addition, the file format is less likely to be affected by ‘bit errors’ and other file system errors due to its more efficient coding structure. ImageEngine will detect if the end user's browser supports JPEG 2000 and automatically convert any format to JPEG 2000 to increase performance.
 
 ## Installation
 
@@ -36,6 +40,51 @@ npm install react-imageengine --save
 const ImageEngine = require('react-imageengine');
 
 <ImageEngine src={"/image.jpg"} width={20} height={30} htmlAttributes={{alt:'Image alt tag'}}/>
+```
+
+Note : src parameters are required other parameters are optional
+
+## Picture element
+
+```
+const ImageEngine, { Picture, Source } = require('react-imageengine');
+
+  <Picture>
+    <Source 
+    srcSet="/images/adventure-american-bison-bison.jpg" 
+    crop={"500,500,2500,1500"}
+    media="(max-width: 639px)"  
+    htmlAttributes={{
+      alt: "ImageEngine image",
+      className: "my-class"
+    }} />
+    <Source 
+    srcSet="/images/adventure-american-bison-bison.jpg" 
+    width={"300"}
+    height={"300"}
+    fitMethod={"cropbox"}
+    media="(min-width: 640px) and (max-width: 1023px)"  
+    htmlAttributes={{
+      alt: "ImageEngine image",
+      className: "my-class"
+    }} />
+    <Source 
+    srcSet="/images/adventure-american-bison-bison.jpg" 
+    width={"auto_500"}
+    media="(min-width: 1024px)" 
+    htmlAttributes={{
+      alt: "ImageEngine image",
+      className: "my-class"
+    }} />
+    <ImageEngine
+    src="/images/adventure-american-bison-bison.jpg"
+    htmlAttributes={{
+      alt: "ImageEngine image",
+      className: "my-class",
+      width: "500px"
+    }}
+  />
+  </Picture>
 ```
 
 Note : src parameters are required other parameters are optional
