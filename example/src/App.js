@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
-import ImageEngine, { Picture, Source } from "react-imageengine";
+import ImageEngine, { Picture, Source, ImageEngineConfig } from "react-imageengine";
+
+ImageEngineConfig.domain = 'cdn.imageengine.io'
 
 export default class App extends Component {
   render() {

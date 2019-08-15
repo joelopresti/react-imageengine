@@ -37,7 +37,9 @@ npm install react-imageengine --save
 ## Usage
 
 ```
-const ImageEngine = require('react-imageengine');
+import ImageEngine, { ImageEngineConfig } = from 'react-imageengine';
+
+ImageEngineConfig.domain = 'mysite.com.imgeng.in'
 
 <ImageEngine src={"/image.jpg"} width={20} height={30} htmlAttributes={{alt:'Image alt tag'}}/>
 ```
@@ -47,7 +49,9 @@ Note : src parameters are required other parameters are optional
 ## Picture element
 
 ```
-const ImageEngine, { Picture, Source } = require('react-imageengine');
+import ImageEngine, { Picture, Source, ImageEngineConfig } = from 'react-imageengine';
+
+ImageEngineConfig.domain = 'mysite.com.imgeng.in'
 
   <Picture>
     <Source 
@@ -122,23 +126,20 @@ htmlAttributes={{
 
 ##  Registered user
 
-Before using this React Component you need to include two environment variables in order to pull from ImageEngine. `REACT_APP_IE_DOMAIN`, which is the domain you have configured in ImageEngine. & `REACT_APP_IE_SSL`, which requires a boolean value if you want to serve through HTTPS or not.
+ImageEngine requires you to enter your ImageEngine domain into the ImageEngineConfig variable in order to pull from that URL. 
 
-Example:
-``` 
-REACT_APP_IE_DOMAIN=mysite.com.imgeng.in
-REACT_APP_IE_SSL=true
 ```
+import ImageEngine, { ImageEngineConfig } = from 'react-imageengine';
 
-To add these environment variables create a .env at the root of your project and assign values to these variables. You can read more about adding custom variables here [Create React App Adding Custom Variables](https://facebook.github.io/create-react-app/docs/adding-custom-environment-variables)
+ImageEngineConfig.domain = 'mysite.com.imgeng.in'
+
+<ImageEngine src={"/image.jpg"} width={20} height={30} htmlAttributes={{alt:'Image alt tag'}}/>
+```
 
 #To run this example
 
 * `git clone`
 * `cd example`
-* create .env with the following variables
-  * `REACT_APP_IE_DOMAIN=cdn.imageengine.io`
-  * `REACT_APP_IE_SSL=true`
 * `npm install`
 * `npm start`
 * example runs create-react-app

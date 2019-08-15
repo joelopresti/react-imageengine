@@ -58,8 +58,8 @@ export default class ImageEngine extends Component {
       stripExifData
     }
 
-    const domain = process.env.REACT_APP_IE_DOMAIN
-    const secure = process.env.REACT_APP_IE_SSL ? 'https://' : 'http://'
+    const domain = ImageEngineConfig.domain
+    const secure = ImageEngineConfig.ssl ? 'https://' : 'http://'
     const imgSrc = buildUrl(src, options)
     const renderUrl = secure + domain + imgSrc
 
@@ -77,7 +77,7 @@ export class Picture extends Component {
     children: PropTypes.node
 
   }
-  render() { 
+  render() {
     const { htmlAttributes, children } = this.props
     return (
       <picture {...htmlAttributes}>{children}</picture>
@@ -142,8 +142,8 @@ export class Source extends Component {
       stripExifData
     }
 
-    const domain = process.env.REACT_APP_IE_DOMAIN
-    const secure = process.env.REACT_APP_IE_SSL ? 'https://' : 'http://'
+    const domain = ImageEngineConfig.domain
+    const secure = ImageEngineConfig.ssl ? 'https://' : 'http://'
     const imgSrc = buildUrl(srcSet, options)
     const renderUrl = secure + domain + imgSrc
 
@@ -153,4 +153,9 @@ export class Source extends Component {
     }
     return (<source srcSet={renderUrl} media={media} type={type} sizes={sizes} {...htmlAttributes} />)
   }
+}
+
+export let ImageEngineConfig = {
+  domain: '',
+  ssl: true
 }
